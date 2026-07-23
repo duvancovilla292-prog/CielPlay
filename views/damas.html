@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Minijuegos - Damas</title>
+    <link rel="stylesheet" href="../css/damas.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Juego de Damas</h1>
+            <p id="modeIndicator">Modo: Contra IA (Calculando...)</p>
+            <a href="index.html" class="back-btn">← Volver al Portal</a>
+        </header>
+
+        <main class="game-layout">
+            <div id="statusPanel" class="status-panel">Turno de las Blancas ⚪</div>
+            
+            <div id="checkers-board" class="board"></div>
+
+            <div class="control-panel">
+                <div class="difficulty-section">
+                    <label for="difficultySelect">Dificultad de la IA:</label>
+                    <select id="difficultySelect">
+                        <option value="1">Fácil (Principiante)</option>
+                        <option value="3" selected>Normal (Estratega)</option>
+                        <option value="5">Difícil (Maestro - Piensa más)</option>
+                    </select>
+                </div>
+                <button id="resetGameBtn" class="action-btn">Reiniciar Partida</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/damas.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CielPlay - Chess Match</title>
+    <link rel="stylesheet" href="../css/chess.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container"></div>
+
+    <header class="game-header">
+        <a href="../index.html" class="back-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver al Menú
+        </a>
+        <div class="game-logo">Ciel<span>Play</span> Chess</div>
+    </header>
+
+    <!-- Modal del Menú de Configuración de Partida Inicial -->
+    <div id="setupModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Configuración de Partida</h3>
+            <p class="modal-desc">Selecciona tu modo de juego preferido para comenzar.</p>
+            
+            <div class="mode-options">
+                <button class="mode-btn active" id="modePVP">
+                    <span class="mode-title">1 vs 1 Local</span>
+                    <span class="mode-sub">Dos jugadores en la misma pantalla</span>
+                </button>
+                <button class="mode-btn" id="modeBot">
+                    <span class="mode-title">Contra el Bot (IA)</span>
+                    <span class="mode-sub">Desafía al motor Stockfish</span>
+                </button>
+            </div>
+
+            <!-- Ajuste de Dificultad oculto por defecto, se activa al elegir Bot -->
+            <div id="difficultySection" class="difficulty-section hidden">
+                <h4>Nivel de la IA</h4>
+                <div class="diff-options">
+                    <button class="diff-btn active" data-level="1">Fácil</button>
+                    <button class="diff-btn" data-level="2">Medio</button>
+                    <button class="diff-btn" data-level="3">Maestro</button>
+                </div>
+            </div>
+
+            <button id="startGameBtn" class="start-game-btn">Iniciar Enfrentamiento</button>
+        </div>
+    </div>
+
+    <!-- Layout Principal del Tablero y Logs -->
+    <main class="chess-container">
+        <div class="game-layout">
+            <div class="board-wrapper">
+                <div class="status-panel" id="statusPanel">Turno de las Blancas</div>
+                
+                <!-- Contenedor del Tablero 8x8 -->
+                <div id="chessboard" class="chessboard"></div>
+            </div>
+
+            <div class="info-sidebar">
+                <div class="panel-header">Detalles de Partida</div>
+                <div class="game-mode-tag" id="modeIndicator">Modo: Local 1v1</div>
+                <div class="move-log-box">
+                    <h4>Historial de Movimientos</h4>
+                    <div id="moveLog" class="move-log">
+                        <p class="empty-log">La partida no ha comenzado.</p>
+                    </div>
+                </div>
+                <button id="resetGameBtn" class="reset-btn">Reiniciar Tablero</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/chess.js"></script>
+</body>
+</html>

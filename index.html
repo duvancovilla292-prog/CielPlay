@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CielPlay - Tu Portal de Juegos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts para un look moderno de desarrollo de software / gaming -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container"></div>
+    
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="logo">Ciel<span>Play</span></h1>
+            <div class="header-actions">
+                <!-- Espacio preparado para el filtro/admin futuro -->
+                <button class="btn-icon" id="adminBtn" title="Panel de Administración (Próximamente)">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="menu-container">
+        <div class="welcome-section">
+            <p class="subtitle">SELECCIONA UNA EXPERIENCIA</p>
+            <h2 class="main-title">Desafía tu mente y lógica</h2>
+        </div>
+
+        <div class="grid-menu">
+            <!-- Tarjeta Chess -->
+            <a href="views/chess.html" class="game-card card-chess">
+                <div class="card-icon-wrapper">
+                    <!-- Icono SVG de un Rey / Pieza de Ajedrez -->
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z"></path><path d="M12 7v10"></path><path d="M8 11h8"></path></svg>
+                </div>
+                <div class="card-info">
+                    <h3>Chess</h3>
+                    <p>Estrategia pura y táctica profunda. Supera a tu oponente en el tablero clásico.</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Tarjeta Damas -->
+            <a href="damas.html" class="game-card card-damas">
+                <div class="card-icon-wrapper">
+                    <!-- Icono SVG de Tablero / Fichas -->
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                </div>
+                <div class="card-info">
+                    <h3>Damas</h3>
+                    <p>Captura, bloquea y corona tus piezas en este dinámico juego tradicional.</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Tarjeta Juego de Colores -->
+            <a href="colores.html" class="game-card card-colores">
+                <div class="card-icon-wrapper">
+                    <!-- Icono SVG que simula los pines de colores de Mastermind -->
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="12" r="3"></circle><circle cx="12" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle></svg>
+                </div>
+                <div class="card-info">
+                    <h3>Código de Colores</h3>
+                    <p>Rompe el código secreto. Deducción pura mediante picas y porras con emojis y colores.</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- Tarjeta Clásico Numérico -->
+            <a href="numeros.html" class="game-card card-numeros">
+                <div class="card-icon-wrapper">
+                    <!-- Icono SVG de Picas y Fijas Clásico con dígitos -->
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="9" y1="4" x2="9" y2="20"></line><line x1="15" y1="4" x2="15" y2="20"></line></svg>
+                </div>
+                <div class="card-info">
+                    <h3>Picas y Porras Clásico</h3>
+                    <p>El juego matemático tradicional de 4 dígitos. Adivina el número sin repetir cifras.</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&lt;code&gt;Desarrollado con precisión matemática&lt;/code&gt;</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
