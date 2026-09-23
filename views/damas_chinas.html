@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Minijuegos - Damas Chinas</title>
+    <link rel="stylesheet" href="../css/damas_chinas.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Damas Chinas</h1>
+            <p id="modeIndicator">Llega con tus 10 fichas a la punta opuesta</p>
+            <a href="index.html" class="back-btn">← Volver al Portal</a>
+        </header>
+
+        <main class="game-layout">
+            <div id="statusPanel" class="status-panel">Turno de las Azules (Tu turno) 🔵</div>
+            
+            <div class="board-container">
+                <canvas id="chineseCheckersCanvas" width="500" height="550"></canvas>
+            </div>
+
+            <div class="control-panel">
+                <div class="difficulty-section">
+                    <label for="difficultySelect">Agresividad IA:</label>
+                    <select id="difficultySelect">
+                        <option value="1">Fácil (Movimientos cortos)</option>
+                        <option value="2" selected>Normal (Busca saltos)</option>
+                        <option value="3">Difícil (Calcula mejores encadenamientos)</option>
+                    </select>
+                </div>
+                <button id="resetGameBtn" class="action-btn">Reiniciar Partida</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/damas_chinas.js"></script>
+</body>
+</html>

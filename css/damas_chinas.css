@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0 0 5px 0;
+    color: #ffffff;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #81c784;
+}
+
+.game-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-panel {
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 1px solid #333;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.board-container {
+    background-color: #1a1a1a;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+
+.difficulty-section select {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #43a047;
+}
