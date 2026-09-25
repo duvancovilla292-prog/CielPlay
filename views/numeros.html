@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picas y Fijas · CielPlay</title>
+    <link rel="stylesheet" href="../css/numeros.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container"></div>
+
+    <header class="game-header">
+        <div class="header-container">
+            <a href="../index.html" class="back-link" title="Volver al menú">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>CielPlay</span>
+            </a>
+            <h1 class="game-title">Picas y Fijas</h1>
+            <div class="header-spacer"></div>
+        </div>
+    </header>
+
+    <main class="game-main">
+
+        <!-- PANTALLA 1: CONFIGURACIÓN -->
+        <section id="screen-setup" class="screen active">
+            <div class="panel">
+                <p class="eyebrow">Configura la partida</p>
+
+                <div class="field-group">
+                    <label>Modo de juego</label>
+                    <div class="choice-row" id="mode-choice">
+                        <button class="choice-btn active" data-mode="bot">
+                            <span class="choice-emoji">🤖</span>
+                            <span>Contra el Bot</span>
+                            <small>Tú creas el código, el bot lo adivina</small>
+                        </button>
+                        <button class="choice-btn" data-mode="multi">
+                            <span class="choice-emoji">👥</span>
+                            <span>Multijugador</span>
+                            <small>2 a 6 jugadores, en el mismo dispositivo</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label>Dificultad</label>
+                    <div class="choice-row wrap" id="difficulty-choice">
+                        <button class="choice-btn small active" data-diff="facil">
+                            <span>Fácil</span>
+                            <small>4 dígitos · sin repetir</small>
+                        </button>
+                        <button class="choice-btn small" data-diff="normal">
+                            <span>Normal</span>
+                            <small>5 dígitos · sin repetir</small>
+                        </button>
+                        <button class="choice-btn small" data-diff="dificil">
+                            <span>Difícil</span>
+                            <small>4 dígitos · con repetición</small>
+                        </button>
+                        <button class="choice-btn small" data-diff="extremo">
+                            <span>Extremo</span>
+                            <small>6 dígitos · con repetición</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="field-group" id="players-field" style="display:none;">
+                    <label>Número de jugadores</label>
+                    <div class="stepper">
+                        <button id="players-minus" class="stepper-btn">−</button>
+                        <span id="players-count">2</span>
+                        <button id="players-plus" class="stepper-btn">+</button>
+                    </div>
+                    <div id="players-names" class="names-grid"></div>
+                </div>
+
+                <button id="btn-start-game" class="btn-primary">Comenzar partida</button>
+            </div>
+        </section>
+
+        <!-- PANTALLA 2: MODO BOT -->
+        <section id="screen-bot" class="screen">
+            <div class="panel">
+                <div id="bot-step-secret">
+                    <p class="eyebrow">Paso 1 · Tu código secreto</p>
+                    <p class="hint">🔒 El bot no puede ver esta pantalla. Crea el código que tendrá que adivinar.</p>
+                    <div id="bot-secret-slots" class="slots"></div>
+                    <div id="bot-secret-keypad" class="keypad"></div>
+                    <div class="action-row">
+                        <button id="bot-secret-clear" class="btn-ghost">Borrar</button>
+                        <button id="bot-secret-confirm" class="btn-primary" disabled>Guardar código y empezar</button>
+                    </div>
+                </div>
+
+                <div id="bot-step-play" style="display:none;">
+                    <p class="eyebrow">El bot está adivinando…</p>
+                    <div class="bot-status">
+                        <span id="bot-attempt-count">0 intentos</span>
+                        <button id="bot-autoplay" class="btn-secondary">▶ Reproducir automático</button>
+                        <button id="bot-nextstep" class="btn-secondary">Siguiente intento</button>
+                    </div>
+                    <div class="history-wrap">
+                        <table class="history-table">
+                            <thead><tr><th>#</th><th>Intento del bot</th><th>Fijas</th><th>Picas</th></tr></thead>
+                            <tbody id="bot-history-body"></tbody>
+                        </table>
+                    </div>
+                    <div id="bot-result" class="result-banner" style="display:none;"></div>
+                    <div class="action-row">
+                        <button id="bot-play-again" class="btn-primary" style="display:none;">Jugar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 3: MULTIJUGADOR -->
+        <section id="screen-multi" class="screen">
+            <div class="panel">
+
+                <div id="multi-scoreboard" class="scoreboard"></div>
+
+                <!-- Transición: pasar el dispositivo -->
+                <div id="multi-pass" class="pass-overlay">
+                    <p class="eyebrow">Vuelta <span id="multi-round-num"></span></p>
+                    <h2 id="multi-pass-title">Pasa el dispositivo a <span class="highlight"></span></h2>
+                    <p class="hint" id="multi-pass-hint"></p>
+                    <button id="multi-pass-ready" class="btn-primary">Estoy listo</button>
+                </div>
+
+                <!-- Crear código (solo lo ve el "maestro") -->
+                <div id="multi-code-entry" style="display:none;">
+                    <p class="eyebrow">Crea tu código secreto, <span id="multi-master-name" class="highlight"></span></p>
+                    <p class="hint">🔒 Los demás jugadores deben estar mirando hacia otro lado.</p>
+                    <div id="multi-secret-slots" class="slots"></div>
+                    <div id="multi-secret-keypad" class="keypad"></div>
+                    <div class="action-row">
+                        <button id="multi-secret-clear" class="btn-ghost">Borrar</button>
+                        <button id="multi-secret-confirm" class="btn-primary" disabled>Guardar código</button>
+                    </div>
+                </div>
+
+                <!-- Fase de adivinanza -->
+                <div id="multi-guessing" style="display:none;">
+                    <p class="eyebrow">Turno de <span id="multi-guesser-name" class="highlight"></span></p>
+                    <p class="hint">Adivinando el código de <span id="multi-target-name"></span></p>
+                    <div id="multi-guess-slots" class="slots"></div>
+                    <div id="multi-guess-keypad" class="keypad"></div>
+                    <div class="action-row">
+                        <button id="multi-guess-clear" class="btn-ghost">Borrar</button>
+                        <button id="multi-guess-confirm" class="btn-primary" disabled>Adivinar</button>
+                        <button id="multi-give-up" class="btn-ghost">Revelar código</button>
+                    </div>
+                    <div class="history-wrap">
+                        <table class="history-table">
+                            <thead><tr><th>#</th><th>Jugador</th><th>Intento</th><th>Fijas</th><th>Picas</th></tr></thead>
+                            <tbody id="multi-history-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="multi-round-result" class="result-banner" style="display:none;"></div>
+
+                <!-- Fin de partida -->
+                <div id="multi-final" style="display:none;">
+                    <p class="eyebrow">Fin de la vuelta</p>
+                    <h2>Resultados</h2>
+                    <div id="multi-final-table"></div>
+                    <div class="action-row">
+                        <button id="multi-again" class="btn-primary">Jugar otra vuelta</button>
+                        <button id="multi-restart" class="btn-ghost">Nueva partida</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&lt;code&gt;Desarrollado con precisión matemática&lt;/code&gt;</p>
+    </footer>
+
+    <script src="../js/numeros.js"></script>
+</body>
+</html>
